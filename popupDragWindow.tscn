@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgyulvyjjb8k5"]
+
+[ext_resource type="Script" path="res://popupDragWindow.gd" id="1_dhai7"]
+
+[node name="Drag" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 367.0
+offset_bottom = 239.0
+script = ExtResource("1_dhai7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.364706, 0.305882, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 56.0
+offset_right = 238.0
+offset_bottom = 79.0
+text = "Drag!
+"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.793
+anchor_top = -2.948
+anchor_right = -0.793
+anchor_bottom = -2.948
+offset_left = 425.824
+offset_top = 790.52
+offset_right = 505.824
+offset_bottom = 811.52
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -10.0
+offset_right = 77.0
+offset_bottom = 30.0
+
+[node name="Miliseconds" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Panel" method="_on_timer_timeout"]

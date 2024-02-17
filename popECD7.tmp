@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://o274d6jo0gqe"]
+
+[ext_resource type="Script" path="res://popupSlider.gd" id="1_2jil7"]
+
+[node name="PopupSlider" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 357.0
+offset_bottom = 237.0
+script = ExtResource("1_2jil7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 357.0
+offset_bottom = 238.0
+color = Color(0.286275, 0.364706, 0.305882, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 173.0
+offset_right = 208.0
+offset_bottom = 204.0
+text = "Click Me!"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 66.0
+offset_right = 235.0
+offset_bottom = 89.0
+text = "Click this Quickly"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.793
+anchor_top = -2.948
+anchor_right = -0.793
+anchor_bottom = -2.948
+offset_left = 407.894
+offset_top = 792.624
+offset_right = 487.894
+offset_bottom = 813.624
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -10.0
+offset_right = 77.0
+offset_bottom = 30.0
+
+[node name="Miliseconds" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 120.0
+offset_right = 227.0
+offset_bottom = 136.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Panel" method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

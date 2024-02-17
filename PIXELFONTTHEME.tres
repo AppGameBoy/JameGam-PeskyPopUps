@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfh8a6pg8as8h"]
+
+[ext_resource type="FontFile" uid="uid://cgxkcvme6c8f2" path="res://Assets/Fonts/early_gameboy/Early GameBoy.ttf" id="1_84l2f"]
+
+[resource]
+default_font = ExtResource("1_84l2f")
