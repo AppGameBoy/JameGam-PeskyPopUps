@@ -1,6 +1,6 @@
 extends Control
 
-var MaxWindows =10
+#var MaxWindows =10
 var time = 0
 var captchaDog 	= preload("res://CaptchaDog.tscn")
 var captchaBike = preload("res://CaptchaBike.tscn")
@@ -17,15 +17,16 @@ var object
 func _ready():
 	#$Label.text = "%s" % MaxWindows
 	#$Label.text = "%s:" % ComputerScreen.MaxWindows
-	print(ComputerScreen.MaxWindows)
-	ComputerScreen.MaxWindows = 10
+	print(Globals.MaxWindows)
+	Globals.MaxWindows = 10
 	#$Captcha.show()
+	
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ComputerScreen.MaxWindows == 0 :
+	if Globals.MaxWindows == 0 :
 		get_tree().reload_current_scene()
 	if progress_bar.value == 15:
 		print("you win")
@@ -51,9 +52,9 @@ func _on_timer_2_timeout():
 	object.position = Vector2(randi_range(0,600),randi_range(0,400))
 	add_child(object)
 	
-	ComputerScreen.MaxWindows-=1
-	$Label.text = "Max Number of Ads: %s" % ComputerScreen.MaxWindows
-	print(ComputerScreen.MaxWindows)
+	Globals.MaxWindows-=1
+	$Label.text = "Max Number of Ads: %s" % Globals.MaxWindows
+	print(Globals.MaxWindows)
 	
 
 

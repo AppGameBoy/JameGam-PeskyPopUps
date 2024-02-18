@@ -9,6 +9,6 @@ func _on_timer_timeout():
 func _on_h_slider_value_changed(value):
 	if value == 100:
 		print("100")
-		ComputerScreen.MaxWindows +=1
+		Globals.MaxWindows +=1
 		queue_free()
 		

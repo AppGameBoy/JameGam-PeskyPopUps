@@ -37,7 +37,7 @@ func _on_yes_pressed():
 
 
 func _on_no_pressed():
-	ComputerScreen.MaxWindows +=1
+	Globals.MaxWindows +=1
 	
 	
 	

@@ -23,6 +23,6 @@ func _on_button_pressed():
 
 
 func _on_timer_timeout():
-	ComputerScreen.MaxWindows +=1
+	Globals.MaxWindows +=1
 	queue_free()
 	pass # Replace with function body.
