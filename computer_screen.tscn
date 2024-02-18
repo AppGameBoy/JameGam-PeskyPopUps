@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bfh8a6pg8as8h" path="res://PIXELFONTTHEME.tres" id="1_684xs"]
 [ext_resource type="Script" path="res://computer_screen.gd" id="1_x7y7c"]
 
-[node name="ComputerScreen" type="Control"]
+[node name="ComputerScreen" type="Control" node_paths=PackedStringArray("progress_bar")]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +16,7 @@ grow_vertical = 2
 size_flags_horizontal = 6
 theme = ExtResource("1_684xs")
 script = ExtResource("1_x7y7c")
+progress_bar = NodePath("ProgressBar")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -28,24 +29,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.396078, 0.407843, 0.882353, 1)
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -10.0
 offset_top = 616.0
-offset_right = 1164.0
-offset_bottom = 654.0
+offset_right = 1171.0
+offset_bottom = 663.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = 394.0
 offset_top = 14.0
 offset_right = 733.0
 offset_bottom = 41.0
-
-[node name="Timer2" type="Timer" parent="."]
-autostart = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -74,5 +71,24 @@ layout_mode = 2
 text = "Files
 "
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[node name="ProgressBarTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpawnerTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpeedUpTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 621.0
+offset_right = 1104.0
+offset_bottom = 641.0
+text = "Max number of Ads :"
+
+[connection signal="timeout" from="ProgressBarTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnerTimer" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]

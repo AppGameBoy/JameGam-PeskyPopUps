@@ -1,14 +1,5 @@
 extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+var control = load("res://computer_screen.gd")
 
 
 func _on_timer_timeout():
@@ -18,4 +9,6 @@ func _on_timer_timeout():
 func _on_h_slider_value_changed(value):
 	if value == 100:
 		print("100")
+		ComputerScreen.MaxWindows +=1
 		queue_free()
+		

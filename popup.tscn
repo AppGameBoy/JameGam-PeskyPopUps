@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cokk8aavxxh51"]
 
-[ext_resource type="Script" path="res://popupMulti.gd" id="1_hhuho"]
 [ext_resource type="Theme" uid="uid://bfh8a6pg8as8h" path="res://PIXELFONTTHEME.tres" id="1_wveho"]
+[ext_resource type="Script" path="res://popup.gd" id="2_0vkos"]
 
 [node name="Popup" type="Control"]
 clip_contents = true
@@ -12,7 +12,7 @@ offset_top = -1.0
 offset_right = 367.0
 offset_bottom = 239.0
 theme = ExtResource("1_wveho")
-script = ExtResource("1_hhuho")
+script = ExtResource("2_0vkos")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -62,10 +62,9 @@ scale = Vector2(0.629118, 1.03734)
 text = "00"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 autostart = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="Panel" method="_on_button_pressed"]
-[connection signal="timeout" from="Timer" to="Panel" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

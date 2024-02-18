@@ -56,27 +56,5 @@ layout_mode = 2
 theme = ExtResource("1_121rm")
 text = "No"
 
-[node name="yesafterno" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "yes
-"
-
-[node name="noafteryes" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "No
-"
-
-[node name="reallyYes" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "yes"
-
-[node name="reallyNo" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "no"
-
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/no" to="." method="_on_no_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/yesafterno" to="." method="_on_yesafterno_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/noafteryes" to="." method="_on_noafteryes_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/reallyYes" to="." method="_on_really_yes_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/reallyNo" to="." method="_on_really_no_pressed"]

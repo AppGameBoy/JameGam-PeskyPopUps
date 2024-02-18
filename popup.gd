@@ -16,12 +16,13 @@ func _process(delta):
 
 
 
+func _on_button_pressed():
+	queue_free()
+	pass
+	
+
 
 func _on_timer_timeout():
-	
-	pass
-
-func _on_button_pressed():
-	
-	pass
-	
+	ComputerScreen.MaxWindows +=1
+	queue_free()
+	pass # Replace with function body.
