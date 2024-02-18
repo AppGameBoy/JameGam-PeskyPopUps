@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cju154r0w0efl"]
+[gd_scene load_steps=5 format=3 uid="uid://cju154r0w0efl"]
 
 [ext_resource type="Theme" uid="uid://bfh8a6pg8as8h" path="res://PIXELFONTTHEME.tres" id="1_684xs"]
 [ext_resource type="Script" path="res://computer_screen.gd" id="1_x7y7c"]
+[ext_resource type="Texture2D" uid="uid://oq5lrh4oxw4q" path="res://icon.svg" id="3_3jy0i"]
+[ext_resource type="AudioStream" uid="uid://5yxjbqird0gp" path="res://Assets/Music/202402161947.2.jamegam.mp3" id="4_ou3it"]
 
 [node name="ComputerScreen" type="Control" node_paths=PackedStringArray("progress_bar")]
 layout_direction = 1
@@ -32,7 +34,7 @@ color = Color(0.396078, 0.407843, 0.882353, 1)
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -10.0
-offset_top = 616.0
+offset_top = 576.0
 offset_right = 1171.0
 offset_bottom = 663.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
@@ -75,11 +77,16 @@ text = "Files
 autostart = true
 
 [node name="SpawnerTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="SpeedUpTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 25.0
+one_shot = true
 autostart = true
+
+[node name="LabelTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -89,6 +96,86 @@ offset_right = 1104.0
 offset_bottom = 641.0
 text = "Max number of Ads :"
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 838.0
+offset_top = 31.0
+offset_right = -40.0
+offset_bottom = -534.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.352941, 0.211765, 1)
+
+[node name="Label2" type="Label" parent="ColorRect3"]
+layout_mode = 1
+offset_right = 290.0
+offset_bottom = 84.0
+text = "stop the ads from restarting the download
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(45, 611)
+scale = Vector2(0.464844, 0.464844)
+texture = ExtResource("3_3jy0i")
+
+[node name="YouWin" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 248.0
+offset_right = 681.0
+offset_bottom = 328.0
+color = Color(0.0862745, 0.121569, 0.0431373, 1)
+
+[node name="Label" type="Label" parent="YouWin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -10.0
+offset_right = 52.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WIN!"
+
+[node name="SpeedUp" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 248.0
+offset_right = 681.0
+offset_bottom = 328.0
+color = Color(0.0862745, 0.121569, 0.0431373, 1)
+
+[node name="Label" type="Label" parent="SpeedUp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -10.0
+offset_right = 52.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SPEED UP!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ou3it")
+volume_db = -20.0
+autoplay = true
+
 [connection signal="timeout" from="ProgressBarTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnerTimer" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="SpeedUpTimer" to="." method="_on_speed_up_timer_timeout"]
+[connection signal="timeout" from="LabelTimer" to="." method="_on_label_timer_timeout"]

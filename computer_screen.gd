@@ -15,12 +15,10 @@ var pop
 var object
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$Label.text = "%s" % MaxWindows
-	#$Label.text = "%s:" % ComputerScreen.MaxWindows
 	print(Globals.MaxWindows)
 	Globals.MaxWindows = 10
-	#$Captcha.show()
-	
+	$YouWin.hide()
+	$SpeedUp.hide()
 
 
 
@@ -28,8 +26,11 @@ func _ready():
 func _process(delta):
 	if Globals.MaxWindows == 0 :
 		get_tree().reload_current_scene()
-	if progress_bar.value == 15:
+	if progress_bar.value == 100:
 		print("you win")
+		$YouWin.show()
+		$SpawnerTimer.stop()
+	
 	
 
 
@@ -59,8 +60,16 @@ func _on_timer_2_timeout():
 
 
 func _on_speed_up_timer_timeout():
-	$SpawnerTimer.wait_time = 2
-	if $ProgressBar.value == 50:
-		$SpawnerTimer.wait_time = 1
+	$SpeedUp.show()
+	$SpawnerTimer.wait_time = 1.5
+	print($SpawnerTimer.wait_time)
+	$LabelTimer.start(1)
 	
+
+
+
+
+
+func _on_label_timer_timeout():
+	$SpeedUp.hide()
 
