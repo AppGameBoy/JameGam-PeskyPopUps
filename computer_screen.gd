@@ -8,8 +8,9 @@ var slider 		= preload("res://popupSlider.tscn")
 var donate 		= preload("res://popupMultiClick.tscn")
 var popup 		= preload("res://popup.tscn")
 
-
-
+var pops 
+var pop
+var object
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$Captcha.show()
@@ -20,12 +21,14 @@ func _ready():
 func _process(delta):
 	
 	
+	
 	pass
 
 
 func _on_timer_timeout():
 	#$Popup.queue_free()
 	$ProgressBar.value+=1
+	
 	pass # Replace with function body.
 
 
@@ -33,10 +36,10 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	randomize()
-	var pops = [captchaDog,captchaBike,slider,donate,popup]
+	pops = [captchaDog,captchaBike,slider,donate,popup]
 	#var pop = pops[randi() % pops.size()]
-	var pop = pops.pick_random()
-	var object = pop.instantiate()
-	object.position = Vector2(100,100)
+	pop = pops.pick_random()
+	object = pop.instantiate()
+	object.position = Vector2(randi_range(0,600),randi_range(0,400))
 	add_child(object)
 	pass # Replace with function body.
